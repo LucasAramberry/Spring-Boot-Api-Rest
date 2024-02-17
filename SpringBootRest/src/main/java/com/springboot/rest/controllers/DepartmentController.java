@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/department")
+@RequestMapping("/api/v1/department")
 public class DepartmentController {
 
     @Autowired
@@ -66,7 +66,7 @@ public class DepartmentController {
                 .city(departmentDTO.getCity())
                 .build());
 
-        return ResponseEntity.created(new URI("/api/department/save")).build();
+        return ResponseEntity.created(new URI("/api/v1/department/save")).build();
     }
 
     @PutMapping("/update/{id}")

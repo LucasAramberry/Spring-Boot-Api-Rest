@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/employee")
+@RequestMapping("/api/v1/employee")
 public class EmployeeController {
 
     @Autowired
@@ -87,7 +87,7 @@ public class EmployeeController {
                 .department(employeeDTO.getDepartment())
                 .build());
 
-        return ResponseEntity.created(new URI("/api/employee/save")).build();
+        return ResponseEntity.created(new URI("/api/v1/employee/save")).build();
     }
 
     @PutMapping("/update/{id}")
