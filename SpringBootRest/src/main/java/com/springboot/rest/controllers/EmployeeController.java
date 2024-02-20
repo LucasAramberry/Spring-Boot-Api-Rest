@@ -3,6 +3,7 @@ package com.springboot.rest.controllers;
 import com.springboot.rest.dto.EmployeeDTO;
 import com.springboot.rest.entities.Employee;
 import com.springboot.rest.services.IEmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -67,11 +68,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<?> save(@RequestBody EmployeeDTO employeeDTO) throws URISyntaxException {
-
-        if (employeeDTO.getName().isBlank()) {
-            return ResponseEntity.badRequest().build();
-        }
+    public ResponseEntity<?> save(@RequestBody @Valid EmployeeDTO employeeDTO) throws URISyntaxException {
 
         iEmployeeService.save(Employee.builder()
                 .id(employeeDTO.getId())
@@ -88,6 +85,8 @@ public class EmployeeController {
                 .build());
 
         return ResponseEntity.created(new URI("/api/v1/employee/save")).build();
+
+//        return ResponseEntity.badRequest().build();
     }
 
     @PutMapping("/update/{id}")

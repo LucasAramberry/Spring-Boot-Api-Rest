@@ -57,16 +57,14 @@ public class DepartmentController {
     @PostMapping("/save")
     public ResponseEntity<?> save(@RequestBody DepartmentDTO departmentDTO) throws URISyntaxException {
 
-        if (departmentDTO.getName().isBlank()) {
-            return ResponseEntity.badRequest().build();
-        }
-
         iDepartmentService.save(Department.builder()
                 .name(departmentDTO.getName())
                 .city(departmentDTO.getCity())
                 .build());
 
         return ResponseEntity.created(new URI("/api/v1/department/save")).build();
+
+        //            return ResponseEntity.badRequest().build();
     }
 
     @PutMapping("/update/{id}")

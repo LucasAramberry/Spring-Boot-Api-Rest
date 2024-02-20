@@ -52,7 +52,7 @@ public class Employee {
     @Column(name = "salario")
     private BigDecimal salary;
 
-    @ManyToOne(targetEntity = Department.class, cascade = CascadeType.PERSIST)
+    @ManyToOne(targetEntity = Department.class)
     @JoinColumn(name = "id_departamento", nullable = false)
     @JsonIgnore
     private Department department;

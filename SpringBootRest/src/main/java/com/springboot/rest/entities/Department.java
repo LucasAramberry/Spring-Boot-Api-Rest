@@ -27,8 +27,7 @@ public class Department {
     @Column(name = "ciudad")
     private String city;
 
-    @OneToMany(targetEntity = Employee.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "department")
-    //, orphanRemoval = true
+    @OneToMany(targetEntity = Employee.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "department", orphanRemoval = true)
     @JsonIgnore
     private List<Employee> employees;
 }
