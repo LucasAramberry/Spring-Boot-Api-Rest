@@ -3,6 +3,7 @@ package com.springboot.rest.controllers;
 import com.springboot.rest.dto.DepartmentDTO;
 import com.springboot.rest.entities.Department;
 import com.springboot.rest.services.IDepartmentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -55,7 +56,7 @@ public class DepartmentController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<?> save(@RequestBody DepartmentDTO departmentDTO) throws URISyntaxException {
+    public ResponseEntity<?> save(@RequestBody @Valid DepartmentDTO departmentDTO) throws URISyntaxException {
 
         iDepartmentService.save(Department.builder()
                 .name(departmentDTO.getName())
@@ -68,7 +69,7 @@ public class DepartmentController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody DepartmentDTO departmentDTO) {
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Valid DepartmentDTO departmentDTO) {
 
         Optional<Department> departmentOptional = iDepartmentService.findById(id);
 

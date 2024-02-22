@@ -90,7 +90,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody EmployeeDTO employeeDTO) {
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Valid EmployeeDTO employeeDTO) {
 
         Optional<Employee> employeeOptional = iEmployeeService.findById(id);
 
